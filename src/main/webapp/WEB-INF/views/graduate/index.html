@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Danh sách thông tin tốt nghiệp</title>
+    <th:block th:replace="/layout/head" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="col-lg-4">
+                    <th:block th:replace="/layout/header_nav_menu"></th:block>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="navbar-brand">Danh sách sthông tin tốt nghiệp</h3>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="body mb-3">
+        <div class="nav-button d-flex mb-3">
+            <div class="div-left col-lg-4">
+                <form action="/graduate/search">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" name="s">
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="div-right col-lg-4 text-end">
+                <a href="/graduate/create">
+                    <button class="btn btn-outline-primary">
+                        Thêm mới
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Trường</th>
+                <th scope="col">Ngành</th>
+                <th scope="col">Số CMND</th>
+<!--                <th scope="col">Họ tên</th>-->
+<!--                <th scope="col">Email</th>-->
+<!--                <th scope="col">Số điện thoại</th>-->
+<!--                <th scope="col">Địa chỉ</th>-->
+                <th scope="col">Hệ tốt nghiệp</th>
+                <th scope="col">Ngày tốt nghiệp</th>
+                <th scope="col">Loại tốt nghiệp</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="item : ${totNghieps}">
+                <tr>
+                    <th th:text="${item.maTruong}"></th>
+                    <th th:text="${item.maNganh}"></th>
+                    <th th:text="${item.soCMND}"></th>
+<!--                    <td th:text="${item.hoTen}"></td>-->
+<!--                    <td th:text="${item.email}"></td>-->
+<!--                    <td th:text="${item.soDT}"></td>-->
+<!--                    <td th:text="${item.diaChi}"></td>-->
+                    <td th:text="${item.heTN}"></td>
+                    <td th:text="${item.ngayTN}"></td>
+                    <td th:text="${item.loaiTN}"></td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm("Bạn có chắc chắn muốn xóa không?");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Danh sách truong</title>
+    <th:block th:replace="/layout/head" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="col-lg-4">
+                    <th:block th:replace="/layout/header_nav_menu"></th:block>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="navbar-brand">Danh sách trường</h3>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="body mb-3">
+        <div class="nav-button d-flex mb-3">
+            <div class="div-left col-lg-4">
+                <form action="/school/search">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" name="s">
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="div-right col-lg-4 text-end">
+                <a href="/school/create">
+                    <button class="btn btn-outline-primary">
+                        Thêm mới
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên trường</th>
+                <th scope="col">Địa chỉ</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col" colspan="2"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="truong : ${truongs}">
+                    <tr>
+                        <th scope="row" th:text="${truong.maTruong}"></th>
+                        <td th:text="${truong.tenTruong}"></td>
+                        <td th:text="${truong.diaChi}"></td>
+                        <td th:text="${truong.soDT}"></td>
+                        <td>
+                            <a th:href="${'/school/edit/' + truong.maTruong}">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    Sửa
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            <form th:action="@{/school/delete/{id}(id=${truong.maTruong})}" method="post">
+                                <button class="btn btn-outline-danger" onclick="return confirmDelete();" type="submit">
+                                    Xóa
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function confirmDelete() {
+            return confirm("Bạn có chắc chắn muốn xóa không?");
+        }
+    </script>
+
+</body>
+</html>
