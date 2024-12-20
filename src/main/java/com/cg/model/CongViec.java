@@ -24,6 +24,13 @@ public class CongViec {
     public CongViec() {
     }
 
+    public CongViec(String soCMND, Long maNganh, String tenCongViec, String tenCongTy) {
+        this.soCMND = soCMND;
+        this.maNganh = maNganh;
+        this.tenCongViec = tenCongViec;
+        this.tenCongTy = tenCongTy;
+    }
+
     public CongViec(String soCMND, LocalDate ngayVaoCongTy, Long maNganh, String tenCongViec, String tenCongTy, String diaChiCongTy, Long thoiGianLamViec) {
         this.soCMND = soCMND;
         this.ngayVaoCongTy = ngayVaoCongTy;

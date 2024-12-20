@@ -3,7 +3,7 @@ package com.cg.service.totNghiep;
 import com.cg.model.SinhVien;
 import com.cg.model.TotNghiep;
 import com.cg.model.TotNghiepID;
-import com.cg.model.dto.ITotNghiepListDTO;
+import com.cg.model.dto.TotNghiepListDTO;
 import com.cg.repository.SinhVienRepository;
 import com.cg.repository.TotNghiepRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +35,14 @@ public class TotNghiepService implements ITotNghiepService {
     }
 
     @Override
-    public List<ITotNghiepListDTO> findAllTotNghiepListDTO() {
+    public List<TotNghiepListDTO> findAllTotNghiepListDTO() {
         return totNghiepRepository.findAllTotNghiepListDTO();
     }
 
     @Override
-    public List<TotNghiep> searchAllBySoCMNDLikeOrHeTNLikeOrLoaiTNLike(String keyWord) {
+    public List<TotNghiepListDTO> searchAllTotNghiepListDTO(String keyWord) {
         keyWord = "%" + keyWord + "%";
-        return totNghiepRepository.searchAllBySoCMNDLikeOrHeTNLikeOrLoaiTNLike(keyWord, keyWord, keyWord);
+        return totNghiepRepository.searchAllTotNghiepListDTO(keyWord);
     }
 
     @Override

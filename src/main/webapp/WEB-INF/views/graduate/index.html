@@ -54,10 +54,7 @@
                 <th scope="col" class="text-center">Trường</th>
                 <th scope="col" class="text-center">Ngành</th>
                 <th scope="col" class="text-center">Số CMND</th>
-<!--                <th scope="col" class="text-center">Họ tên</th>-->
-<!--                <th scope="col" class="text-center">Email</th>-->
-<!--                <th scope="col" class="text-center">Số điện thoại</th>-->
-<!--                <th scope="col">Địa chỉ</th>-->
+                <th scope="col" class="text-center">Họ tên</th>
                 <th scope="col" class="text-center">Hệ tốt nghiệp</th>
                 <th scope="col" class="text-center">Ngày tốt nghiệp</th>
                 <th scope="col" class="text-center">Loại tốt nghiệp</th>
@@ -66,13 +63,10 @@
             <tbody>
             <th:block th:each="item : ${totNghieps}">
                 <tr>
-                    <th th:text="${item.maTruong}" class="text-center"></th>
-                    <th th:text="${item.maNganh}" class="text-center"></th>
+                    <th th:text="${item.tenTruong}" class="text-center"></th>
+                    <th th:text="${item.tenNganh}" class="text-center"></th>
                     <th th:text="${item.soCMND}" class="text-center"></th>
-<!--                    <td th:text="${item.hoTen}"></td>-->
-<!--                    <td th:text="${item.email}"></td>-->
-<!--                    <td th:text="${item.soDT}"></td>-->
-<!--                    <td th:text="${item.diaChi}"></td>-->
+                    <td th:text="${item.hoTen}" class="text-center"></td>
                     <td th:text="${item.heTN}" class="text-center"></td>
                     <td th:text="${item.ngayTN}" class="text-center"></td>
                     <td th:text="${item.loaiTN}" class="text-center"></td>
@@ -81,12 +75,6 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        function confirmDelete() {
-            return confirm("Bạn có chắc chắn muốn xóa không?");
-        }
-    </script>
 
 </body>
 </html>

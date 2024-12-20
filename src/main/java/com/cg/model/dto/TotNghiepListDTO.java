@@ -3,35 +3,25 @@ package com.cg.model.dto;
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
 
 public class TotNghiepListDTO {
     private String tenTruong;
     private String tenNganh;
     private String soCMND;
     private String hoTen;
-    private String email;
-    private String soDT;
-    private String diaChi;
     private String heTN;
-    private String ngayTN;
+    private LocalDate ngayTN;
     private String loaiTN;
 
     public TotNghiepListDTO() {
     }
 
-    public TotNghiepListDTO(String tenTruong, String tenNganh) {
-        this.tenTruong = tenTruong;
-        this.tenNganh = tenNganh;
-    }
-
-    public TotNghiepListDTO(String tenTruong, String tenNganh, String soCMND, String hoTen, String email, String soDT, String diaChi, String heTN, String ngayTN, String loaiTN) {
+    public TotNghiepListDTO(String tenTruong, String tenNganh, String soCMND, String hoTen, String heTN, LocalDate ngayTN, String loaiTN) {
         this.tenTruong = tenTruong;
         this.tenNganh = tenNganh;
         this.soCMND = soCMND;
         this.hoTen = hoTen;
-        this.email = email;
-        this.soDT = soDT;
-        this.diaChi = diaChi;
         this.heTN = heTN;
         this.ngayTN = ngayTN;
         this.loaiTN = loaiTN;
@@ -69,30 +59,6 @@ public class TotNghiepListDTO {
         this.hoTen = hoTen;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSoDT() {
-        return soDT;
-    }
-
-    public void setSoDT(String soDT) {
-        this.soDT = soDT;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
     public String getHeTN() {
         return heTN;
     }
@@ -101,11 +67,11 @@ public class TotNghiepListDTO {
         this.heTN = heTN;
     }
 
-    public String getNgayTN() {
+    public LocalDate getNgayTN() {
         return ngayTN;
     }
 
-    public void setNgayTN(String ngayTN) {
+    public void setNgayTN(LocalDate ngayTN) {
         this.ngayTN = ngayTN;
     }
 

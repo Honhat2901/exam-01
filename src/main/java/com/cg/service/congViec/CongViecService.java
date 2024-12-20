@@ -2,6 +2,7 @@ package com.cg.service.congViec;
 
 import com.cg.model.CongViec;
 import com.cg.model.CongViecID;
+import com.cg.model.dto.CongViecDTO;
 import com.cg.repository.CongViecRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,20 @@ public class CongViecService implements ICongViecService {
     }
 
     @Override
+    public List<CongViecDTO> findAllCongViecDTO() {
+        return congViecRepository.findAllCongViecDTO();
+    }
+
+    @Override
     public List<CongViec> searchAllBySoCMNDLikeOrTenCongViecLikeOrTenCongTyLike(String keyWord) {
         keyWord = "%" + keyWord + "%";
         return congViecRepository.searchAllBySoCMNDLikeOrTenCongViecLikeOrTenCongTyLike(keyWord, keyWord, keyWord);
+    }
+
+    @Override
+    public List<CongViecDTO> searchAllByKeyword(String keyWord) {
+        keyWord = "%" + keyWord + "%";
+        return congViecRepository.searchAllByKeyword(keyWord);
     }
 
     @Override

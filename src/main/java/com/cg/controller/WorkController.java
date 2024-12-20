@@ -2,6 +2,7 @@ package com.cg.controller;
 
 import com.cg.model.*;
 import com.cg.model.dto.CongViecCreateDTO;
+import com.cg.model.dto.CongViecDTO;
 import com.cg.service.congViec.ICongViecService;
 import com.cg.service.nganh.INganhService;
 import com.cg.service.sinhvien.ISinhVienService;
@@ -36,7 +37,7 @@ public class WorkController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/work/index");
 
-        List<CongViec> congViecs = congViecService.findAll();
+        List<CongViecDTO> congViecs = congViecService.findAllCongViecDTO();
         mv.addObject("congViecs", congViecs);
 
         return mv;
@@ -61,7 +62,8 @@ public class WorkController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/work/index");
 
-        List<CongViec> congViecs = congViecService.searchAllBySoCMNDLikeOrTenCongViecLikeOrTenCongTyLike(s);
+//        List<CongViec> congViecs = congViecService.searchAllBySoCMNDLikeOrTenCongViecLikeOrTenCongTyLike(s);
+        List<CongViecDTO> congViecs = congViecService.searchAllByKeyword(s);
 
         mv.addObject("congViecs", congViecs);
 

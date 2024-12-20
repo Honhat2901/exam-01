@@ -4,7 +4,6 @@ import com.cg.model.Nganh;
 import com.cg.model.SinhVien;
 import com.cg.model.TotNghiep;
 import com.cg.model.Truong;
-import com.cg.model.dto.ITotNghiepListDTO;
 import com.cg.model.dto.TotNghiepCreateDTO;
 import com.cg.model.dto.TotNghiepListDTO;
 import com.cg.service.nganh.INganhService;
@@ -45,9 +44,9 @@ public class GraduateController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/graduate/index");
 
-        List<TotNghiepListDTO> totNghiepListDTOS = new ArrayList<>();
+        List<TotNghiepListDTO> totNghiepListDTOS = totNghiepService.findAllTotNghiepListDTO();
 
-        List<TotNghiep> totNghieps = totNghiepService.findAll();
+//        List<TotNghiep> totNghieps = totNghiepService.findAll();
 
 //        for (TotNghiep tn : totNghieps) {
 //            TotNghiepListDTO totNghiepListDTO = new TotNghiepListDTO();
@@ -70,7 +69,7 @@ public class GraduateController {
 //            totNghiepListDTOS.add(totNghiepListDTO);
 //        }
 
-        mv.addObject("totNghieps", totNghieps);
+        mv.addObject("totNghieps", totNghiepListDTOS);
 
         return mv;
     }
@@ -98,9 +97,9 @@ public class GraduateController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/graduate/index");
 
-        List<TotNghiep> totNghieps = totNghiepService.searchAllBySoCMNDLikeOrHeTNLikeOrLoaiTNLike(s);
+        List<TotNghiepListDTO> totNghiepListDTOS = totNghiepService.searchAllTotNghiepListDTO(s);
 
-        mv.addObject("totNghieps", totNghieps);
+        mv.addObject("totNghieps", totNghiepListDTOS);
 
         return mv;
     }
