@@ -21,7 +21,7 @@
         </nav>
     </header>
 
-    <div class="body mb-3">
+    <div class="body mt-2 mb-3">
         <div class="nav-button d-flex mb-3">
             <div class="div-left col-lg-4">
                 <form action="/student/search">
@@ -51,10 +51,10 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">Số CMND</th>
-                <th scope="col">Họ tên</th>
-                <th scope="col">Email</th>
-                <th scope="col">Số điện thoại</th>
+                <th scope="col" class="text-center">Số CMND</th>
+                <th scope="col" class="text-center">Họ tên</th>
+                <th scope="col" class="text-center">Email</th>
+                <th scope="col" class="text-center">Số điện thoại</th>
                 <th scope="col">Địa chỉ</th>
                 <th scope="col" colspan="2"></th>
             </tr>
@@ -62,19 +62,19 @@
             <tbody>
             <th:block th:each="sinhvien : ${sinhViens}">
                 <tr>
-                    <th scope="row" th:text="${sinhvien.soCMND}"></th>
-                    <td th:text="${sinhvien.hoTen}"></td>
-                    <td th:text="${sinhvien.email}"></td>
-                    <td th:text="${sinhvien.soDT}"></td>
+                    <th scope="row" th:text="${sinhvien.soCMND}" class="text-center"></th>
+                    <td th:text="${sinhvien.hoTen}" class="text-center"></td>
+                    <td th:text="${sinhvien.email}" class="text-center"></td>
+                    <td th:text="${sinhvien.soDT}" class="text-center"></td>
                     <td th:text="${sinhvien.diaChi}"></td>
-                    <td>
+                    <td class="text-center">
                         <a th:href="${'/student/edit/' + sinhvien.soCMND}">
                             <button class="btn btn-outline-secondary" type="button">
                                 Sửa
                             </button>
                         </a>
                     </td>
-                    <td>
+                    <td class="text-center">
                         <form th:action="@{/student/delete/{id}(id=${sinhvien.soCMND})}" method="post">
                             <button class="btn btn-outline-danger" onclick="return confirmDelete();" type="submit">
                                 Xóa

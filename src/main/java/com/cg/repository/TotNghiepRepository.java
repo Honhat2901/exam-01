@@ -2,12 +2,9 @@ package com.cg.repository;
 
 import com.cg.model.TotNghiep;
 import com.cg.model.TotNghiepID;
-import com.cg.model.Truong;
 import com.cg.model.dto.ITotNghiepListDTO;
-import com.cg.model.dto.TotNghiepListDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,6 +12,7 @@ import java.util.List;
 @Repository
 public interface TotNghiepRepository extends JpaRepository<TotNghiep, TotNghiepID> {
 
+    List<TotNghiep> searchAllBySoCMNDLikeOrHeTNLikeOrLoaiTNLike(String soCMND, String heTN, String loaiTN);
 
     @Query(value = "SELECT " +
             "tr.tenTruong, " +

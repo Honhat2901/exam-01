@@ -40,6 +40,12 @@ public class TotNghiepService implements ITotNghiepService {
     }
 
     @Override
+    public List<TotNghiep> searchAllBySoCMNDLikeOrHeTNLikeOrLoaiTNLike(String keyWord) {
+        keyWord = "%" + keyWord + "%";
+        return totNghiepRepository.searchAllBySoCMNDLikeOrHeTNLikeOrLoaiTNLike(keyWord, keyWord, keyWord);
+    }
+
+    @Override
     public List<TotNghiep> searchTotNghiep() {
         return null;
     }

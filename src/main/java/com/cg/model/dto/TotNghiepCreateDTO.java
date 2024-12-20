@@ -3,7 +3,6 @@ package com.cg.model.dto;
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.util.Date;
 
 public class TotNghiepCreateDTO {
     private Long maTruong;

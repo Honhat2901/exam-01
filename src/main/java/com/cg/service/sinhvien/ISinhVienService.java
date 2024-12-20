@@ -3,6 +3,7 @@ package com.cg.service.sinhvien;
 import com.cg.model.SinhVien;
 import com.cg.service.BaseService;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ISinhVienService extends BaseService<SinhVien, Long> {
@@ -14,5 +15,7 @@ public interface ISinhVienService extends BaseService<SinhVien, Long> {
     Boolean existsByEmailAndSoCMNDNot(String email, String soCMND);
 
     Optional<SinhVien> findBySoCMND(String soCMND);
+
+    List<SinhVien> searchAllBySoCMNDLikeOrHoTenLikeOrEmailLikeOrSoDTLike(String keyWord);
 
 }
