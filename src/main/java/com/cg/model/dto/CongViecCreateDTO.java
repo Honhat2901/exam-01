@@ -7,6 +7,10 @@ import javax.validation.constraints.Pattern;
 public class CongViecCreateDTO {
     @Pattern(regexp = "^\\d{14}$", message = "Vui lòng nhập đúng số CMND (14 chữ số)")
     private String soCMND;
+
+    private String hoTen;
+
+    @NotBlank(message = "Vui lòng nhập ngày vào công ty")
     private String ngayVaoCongTy;
     private Long maNganh;
 
@@ -25,8 +29,9 @@ public class CongViecCreateDTO {
     public CongViecCreateDTO() {
     }
 
-    public CongViecCreateDTO(String soCMND, String ngayVaoCongTy, Long maNganh, String tenCongViec, String tenCongTy, String diaChiCongTy, String thoiGianLamViec) {
+    public CongViecCreateDTO(String soCMND, String hoTen, String ngayVaoCongTy, Long maNganh, String tenCongViec, String tenCongTy, String diaChiCongTy, String thoiGianLamViec) {
         this.soCMND = soCMND;
+        this.hoTen = hoTen;
         this.ngayVaoCongTy = ngayVaoCongTy;
         this.maNganh = maNganh;
         this.tenCongViec = tenCongViec;
@@ -41,6 +46,14 @@ public class CongViecCreateDTO {
 
     public void setSoCMND(String soCMND) {
         this.soCMND = soCMND;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
     public String getNgayVaoCongTy() {
