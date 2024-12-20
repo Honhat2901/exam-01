@@ -111,16 +111,17 @@ public class WorkController {
             if (ngayVaoCongTy.isAfter(LocalDate.now())) {
                 errors.add("Ngày vào công ty không hợp lệ");
             }
+            else {
+                int thoiGianLamViec = Integer.parseInt(congViecCreateDTO.getThoiGianLamViec());
 
-            int thoiGianLamViec = Integer.parseInt(congViecCreateDTO.getThoiGianLamViec());
+                int namLamViec = thoiGianLamViec / 12;
+                int thangLamViec = thoiGianLamViec % 12;
 
-            int namLamViec = thoiGianLamViec / 12;
-            int thangLamViec = thoiGianLamViec % 12;
+                LocalDate ngayLamViec = ngayVaoCongTy.plusYears(namLamViec).plusMonths(thangLamViec);
 
-            LocalDate ngayLamViec = ngayVaoCongTy.plusYears(namLamViec).plusMonths(thangLamViec);
-
-            if (ngayLamViec.isAfter(LocalDate.now())) {
-                errors.add("Thời gian làm việc không hợp lệ");
+                if (ngayLamViec.isAfter(LocalDate.now())) {
+                    errors.add("Thời gian làm việc không hợp lệ");
+                }
             }
 
             if (errors.isEmpty()) {
