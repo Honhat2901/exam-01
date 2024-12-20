@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Danh sách thông tin công việc</title>
+    <th:block th:replace="/layout/head" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="col-lg-4">
+                    <th:block th:replace="/layout/header_nav_menu"></th:block>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="navbar-brand">Danh sách thông tin công việc</h3>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="body mt-2 mb-3">
+        <div class="nav-button d-flex mb-3">
+            <div class="div-left col-lg-4">
+                <form action="/work/search">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <input type="text" class="form-control" name="s">
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="div-right col-lg-4 text-end">
+                <a href="/work/create">
+                    <button class="btn btn-outline-primary">
+                        Thêm mới
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col" class="text-center">Số CMND</th>
+                <th scope="col" class="text-center">Ngành</th>
+                <th scope="col" class="text-center">Ngày vào công ty</th>
+                <th scope="col" class="text-center">Tên công việc</th>
+                <th scope="col" class="text-center">Tên công ty</th>
+                <th scope="col" class="text-center">Địa chỉ công ty</th>
+                <th scope="col" class="text-center">Thời gian làm việc</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="item : ${congViecs}">
+                <tr>
+                    <th th:text="${item.soCMND}" class="text-center"></th>
+                    <th th:text="${item.tenNganh}" class="text-center"></th>
+                    <th th:text="${item.ngayVaoCongTy}" class="text-center"></th>
+                    <td th:text="${item.tenCongViec}" class="text-center"></td>
+                    <td th:text="${item.tenCongTy}" class="text-center"></td>
+                    <td th:text="${item.diaChiCongTy}"></td>
+                    <th:block th:if="${item.thoiGianLamViec < 12}">
+                        <td th:text="${item.thoiGianLamViec} + ' tháng'" class="text-center"></td>
+                    </th:block>
+                    <th:block th:if="${item.thoiGianLamViec == 12}">
+                        <td th:text="'1 năm'" class="text-center"></td>
+                    </th:block>
+                    <th:block th:if="${item.thoiGianLamViec > 12}">
+                        <td th:text="${item.thoiGianLamViec / 12} + ' năm ' + ${item.thoiGianLamViec % 12} + ' tháng'" class="text-center"></td>
+                    </th:block>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

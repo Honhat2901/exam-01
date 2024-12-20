@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Thêm mới công việc</title>
+    <th:block th:replace="/layout/head" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="col-lg-4">
+                    <th:block th:replace="/layout/header_nav_menu"></th:block>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="navbar-brand">Thêm mới công việc</h3>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="body">
+        <div class="nav-button text-end">
+            <a href="/work">
+                <button class="btn btn-outline-secondary" type="button">
+                    Danh sách
+                </button>
+            </a>
+        </div>
+
+        <div class="col-lg-12" style="display: flex;">
+            <div class="col-lg-3">
+
+            </div>
+            <div class="col-lg-6">
+                <div id="message-alert">
+                    <th:block th:if="${hasSuccess} == true">
+                        <div class="alert-success p-2">
+                            <b><h3>Thêm mới công việc thành công</h3></b>
+                        </div>
+                    </th:block>
+
+                    <th:block th:if="${hasError} == true">
+                        <div class="alert-danger p-2">
+                            <h5>Vui lòng xem và sửa các lỗi sau:</h5>
+                            <ul th:each="er : ${errors}">
+                                <li th:text="${er.getDefaultMessage()}"></li>
+                            </ul>
+                            <ul th:each="er : ${dataError}">
+                                <li th:text="${er}"></li>
+                            </ul>
+                        </div>
+                    </th:block>
+                </div>
+
+                <div class="col-lg-12">
+                    <form th:object="${congViec}" method="post" class="mt-3">
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="soCMND" class="form-label">Số CMND</label>
+                            <div class="input-group">
+                                <input type="text" readonly class="form-control" id="soCMND" th:field="${congViec.soCMND}" style="background-color: #fff;">
+                                <span class="input-group-text" id="btnShowModal"><i class="bi bi-search"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="hoTen" class="form-label">Họ tên</label>
+                            <div class="input-group">
+                                <input type="text" readonly class="form-control" id="hoTen" th:field="${congViec.hoTen}" style="background-color: #fff;">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="maNganh" class="form-label">Mã ngành</label>
+                            <select class="form-select" id="maNganh" name="maNganh">
+                                <th:block th:each="item : ${nganhs}">
+                                    <option th:text="${item.tenNganh}" th:value="${item.maNganh}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="ngayVaoCongTy" class="form-label">Ngày vào công ty</label>
+                            <input type="date" class="form-control" id="ngayVaoCongTy" th:field="${congViec.ngayVaoCongTy}">
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="tenCongViec" class="form-label">Tên công việc</label>
+                            <input type="text" class="form-control" id="tenCongViec" th:field="${congViec.tenCongViec}">
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="tenCongTy" class="form-label">Tên công ty</label>
+                            <input type="text" class="form-control" id="tenCongTy" th:field="${congViec.tenCongTy}">
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="diaChiCongTy" class="form-label">Địa chỉ công ty</label>
+                            <input type="text" class="form-control" id="diaChiCongTy" th:field="${congViec.diaChiCongTy}">
+                        </div>
+                        <div class="col-lg-6 mb-3 px-2" style="float: left;">
+                            <label for="thoiGianLamViec" class="form-label">Thời gian làm việc (tháng)</label>
+                            <input type="number" class="form-control" id="thoiGianLamViec" th:field="${congViec.thoiGianLamViec}">
+                        </div>
+                        <div class="col-lg-6 mt-3 px-2" style="clear: both;">
+                            <button type="submit" class="btn btn-outline-primary px-2">Thêm mới</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="studentModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Danh sách sinh viên</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <input type="text" class="form-control" id="inputSearch">
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="button" class="btn btn-outline-success" id="btnSearch">Tìm kiếm</button>
+                        </div>
+                    </div>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Số CMND</th>
+                                <th scope="col">Họ tên</th>
+                                <th scope="col">Email</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const studentModal = $('#studentModal');
+        const inputSearch = $('#inputSearch');
+        const btnSearch = $('#btnSearch');
+        const btnShowModal = $('#btnShowModal');
+        const tbody = $('#tbody');
+        const inputSoCMND = $('#soCMND');
+        const inputHoTen = $('#hoTen')
+
+        btnShowModal.on('click', () => {
+            studentModal.modal('show');
+        });
+
+        btnSearch.on('click', () => {
+            $.ajax(
+                {
+                    method: 'GET',
+                    url: 'http://localhost:8080/api/students/search?k=' + inputSearch.val(),
+                }
+            )
+                .done((data) => {
+                    tbody.empty();
+
+                    $.each(data, (index, item) => {
+                        const str = renderStudents(item);
+                        tbody.append(str);
+                    })
+                })
+                .fail((err) => {
+                    const responseJSON = err.responseJSON
+                })
+                .always(() => {
+
+                });
+        });
+
+        const renderStudents = (obj) => {
+            return `
+                <tr>
+                    <td>${obj.soCMND}</td>
+                    <td>${obj.hoTen}</td>
+                    <td>${obj.email}</td>
+                    <td>
+                        <button class="btn btn-outline-primary" type="button" onclick="selectStudent('${obj.soCMND}', '${obj.hoTen}')">
+                            Chọn
+                        </button>
+                    </td>
+                </tr>
+            `
+        }
+
+        const selectStudent = (soCMND, hoten) => {
+            inputSoCMND.val(soCMND);
+            inputHoTen.val(hoten)
+            inputSearch.val('');
+            studentModal.modal('hide');
+        }
+
+    </script>
+</body>
+</html>

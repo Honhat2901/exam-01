@@ -24,16 +24,16 @@
     <div class="body mb-3">
         <div class="nav-button d-flex mb-3">
             <div class="div-left col-lg-4">
-                <form action="/job/search">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <input type="text" class="form-control" name="s">
-                        </div>
-                        <div class="col-lg-3">
-                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
-                        </div>
-                    </div>
-                </form>
+<!--                <form action="/job/search">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-8">-->
+<!--                            <input type="text" class="form-control" name="s">-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-3">-->
+<!--                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
             </div>
             <div class="col-lg-4">
 
@@ -50,18 +50,18 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Loại ngành</th>
-                <th scope="col">Tên ngành</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Loại ngành</th>
+                <th scope="col" class="text-center">Tên ngành</th>
                 <th scope="col" colspan="2"></th>
             </tr>
             </thead>
             <tbody>
                 <th:block th:each="nganh : ${nganhs}">
                     <tr>
-                        <th scope="row" th:text="${nganh.maNganh}"></th>
-                        <td th:text="${nganh.loaiNganh}"></td>
-                        <td th:text="${nganh.tenNganh}"></td>
+                        <th scope="row" th:text="${nganh.maNganh}" class="text-center"></th>
+                        <td th:text="${nganh.loaiNganh}" class="text-center"></td>
+                        <td th:text="${nganh.tenNganh}" class="text-center"></td>
                         <td>
                             <a th:href="${'/job/edit/' + nganh.maNganh}">
                                 <button class="btn btn-outline-secondary" type="button">Sửa</button>

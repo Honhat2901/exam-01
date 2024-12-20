@@ -24,17 +24,16 @@
     <div class="body mb-3">
         <div class="nav-button d-flex mb-3">
             <div class="div-left col-lg-4">
-                <form action="/school/search">
-                    <div class="row">
-                        <div class="col-lg-8">
-                            <input type="text" class="form-control" name="s">
-                        </div>
-                        <div class="col-lg-3">
-                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
-                        </div>
-                    </div>
-
-                </form>
+<!--                <form action="/school/search">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-8">-->
+<!--                            <input type="text" class="form-control" name="s">-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-3">-->
+<!--                            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
             </div>
             <div class="col-lg-4">
 
@@ -51,28 +50,28 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tên trường</th>
-                <th scope="col">Địa chỉ</th>
-                <th scope="col">Số điện thoại</th>
+                <th scope="col" class="text-center">#</th>
+                <th scope="col" class="text-center">Tên trường</th>
+                <th scope="col" class="text-center">Địa chỉ</th>
+                <th scope="col" class="text-center">Số điện thoại</th>
                 <th scope="col" colspan="2"></th>
             </tr>
             </thead>
             <tbody>
                 <th:block th:each="truong : ${truongs}">
                     <tr>
-                        <th scope="row" th:text="${truong.maTruong}"></th>
-                        <td th:text="${truong.tenTruong}"></td>
+                        <th scope="row" th:text="${truong.maTruong}" class="text-center"></th>
+                        <td th:text="${truong.tenTruong}" class="text-center"></td>
                         <td th:text="${truong.diaChi}"></td>
-                        <td th:text="${truong.soDT}"></td>
-                        <td>
+                        <td th:text="${truong.soDT}" class="text-center"></td>
+                        <td class="text-center">
                             <a th:href="${'/school/edit/' + truong.maTruong}">
                                 <button class="btn btn-outline-secondary" type="button">
                                     Sửa
                                 </button>
                             </a>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <form th:action="@{/school/delete/{id}(id=${truong.maTruong})}" method="post">
                                 <button class="btn btn-outline-danger" onclick="return confirmDelete();" type="submit">
                                     Xóa

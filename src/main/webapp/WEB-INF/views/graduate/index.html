@@ -12,7 +12,7 @@
                     <th:block th:replace="/layout/header_nav_menu"></th:block>
                 </div>
                 <div class="col-lg-4">
-                    <h3 class="navbar-brand">Danh sách sthông tin tốt nghiệp</h3>
+                    <h3 class="navbar-brand">Danh sách thông tin tốt nghiệp</h3>
                 </div>
                 <div class="col-lg-4">
 
@@ -21,7 +21,7 @@
         </nav>
     </header>
 
-    <div class="body mb-3">
+    <div class="body mt-2 mb-3">
         <div class="nav-button d-flex mb-3">
             <div class="div-left col-lg-4">
                 <form action="/graduate/search">
@@ -51,42 +51,30 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">Trường</th>
-                <th scope="col">Ngành</th>
-                <th scope="col">Số CMND</th>
-<!--                <th scope="col">Họ tên</th>-->
-<!--                <th scope="col">Email</th>-->
-<!--                <th scope="col">Số điện thoại</th>-->
-<!--                <th scope="col">Địa chỉ</th>-->
-                <th scope="col">Hệ tốt nghiệp</th>
-                <th scope="col">Ngày tốt nghiệp</th>
-                <th scope="col">Loại tốt nghiệp</th>
+                <th scope="col" class="text-center">Trường</th>
+                <th scope="col" class="text-center">Ngành</th>
+                <th scope="col" class="text-center">Số CMND</th>
+                <th scope="col" class="text-center">Họ tên</th>
+                <th scope="col" class="text-center">Hệ tốt nghiệp</th>
+                <th scope="col" class="text-center">Ngày tốt nghiệp</th>
+                <th scope="col" class="text-center">Loại tốt nghiệp</th>
             </tr>
             </thead>
             <tbody>
             <th:block th:each="item : ${totNghieps}">
                 <tr>
-                    <th th:text="${item.maTruong}"></th>
-                    <th th:text="${item.maNganh}"></th>
-                    <th th:text="${item.soCMND}"></th>
-<!--                    <td th:text="${item.hoTen}"></td>-->
-<!--                    <td th:text="${item.email}"></td>-->
-<!--                    <td th:text="${item.soDT}"></td>-->
-<!--                    <td th:text="${item.diaChi}"></td>-->
-                    <td th:text="${item.heTN}"></td>
-                    <td th:text="${item.ngayTN}"></td>
-                    <td th:text="${item.loaiTN}"></td>
+                    <th th:text="${item.tenTruong}" class="text-center"></th>
+                    <th th:text="${item.tenNganh}" class="text-center"></th>
+                    <th th:text="${item.soCMND}" class="text-center"></th>
+                    <td th:text="${item.hoTen}" class="text-center"></td>
+                    <td th:text="${item.heTN}" class="text-center"></td>
+                    <td th:text="${item.ngayTN}" class="text-center"></td>
+                    <td th:text="${item.loaiTN}" class="text-center"></td>
                 </tr>
             </th:block>
             </tbody>
         </table>
     </div>
-
-    <script>
-        function confirmDelete() {
-            return confirm("Bạn có chắc chắn muốn xóa không?");
-        }
-    </script>
 
 </body>
 </html>

@@ -46,6 +46,12 @@ public class SinhVienService implements ISinhVienService {
     }
 
     @Override
+    public List<SinhVien> searchAllBySoCMNDLikeOrHoTenLikeOrEmailLikeOrSoDTLike(String keyWord) {
+        keyWord = "%" + keyWord + "%";
+        return sinhVienRepository.searchAllBySoCMNDLikeOrHoTenLikeOrEmailLikeOrSoDTLike(keyWord, keyWord, keyWord, keyWord);
+    }
+
+    @Override
     public SinhVien save(SinhVien sinhVien) {
         return sinhVienRepository.save(sinhVien);
     }
