@@ -112,6 +112,17 @@ public class WorkController {
                 errors.add("Ngày vào công ty không hợp lệ");
             }
 
+            int thoiGianLamViec = Integer.parseInt(congViecCreateDTO.getThoiGianLamViec());
+
+            int namLamViec = thoiGianLamViec / 12;
+            int thangLamViec = thoiGianLamViec % 12;
+
+            LocalDate ngayLamViec = ngayVaoCongTy.plusYears(namLamViec).plusMonths(thangLamViec);
+
+            if (ngayLamViec.isAfter(LocalDate.now())) {
+                errors.add("Thời gian làm việc không hợp lệ");
+            }
+
             if (errors.isEmpty()) {
                 CongViec congViec = new CongViec();
                 congViec.setSoCMND(congViecCreateDTO.getSoCMND());
