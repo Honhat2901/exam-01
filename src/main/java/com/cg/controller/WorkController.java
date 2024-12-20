@@ -120,7 +120,7 @@ public class WorkController {
                 congViec.setTenCongViec(congViecCreateDTO.getTenCongViec());
                 congViec.setTenCongTy(congViecCreateDTO.getTenCongTy()  );
                 congViec.setDiaChiCongTy(congViecCreateDTO.getDiaChiCongTy());
-                congViec.setThoiGianLamViec(congViecCreateDTO.getThoiGianLamViec());
+                congViec.setThoiGianLamViec(Long.parseLong(congViecCreateDTO.getThoiGianLamViec()));
 
                 congViecService.save(congViec);
 
