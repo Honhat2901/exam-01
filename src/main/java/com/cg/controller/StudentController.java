@@ -101,7 +101,7 @@ public class StudentController {
                     sinhVien.setSoCMND(soCMND);
                     sinhVienService.save(sinhVien);
                     mv.addObject("hasSuccess", true);
-                    mv.addObject("sinhVien", new SinhVien());
+                    mv.addObject("sinhVien", sinhVien);
                 }
                 else {
                     mv.addObject("dataError", errors);
