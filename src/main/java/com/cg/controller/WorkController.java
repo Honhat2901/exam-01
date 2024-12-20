@@ -2,12 +2,9 @@ package com.cg.controller;
 
 import com.cg.model.*;
 import com.cg.model.dto.CongViecCreateDTO;
-import com.cg.model.dto.TotNghiepCreateDTO;
 import com.cg.service.congViec.ICongViecService;
 import com.cg.service.nganh.INganhService;
 import com.cg.service.sinhvien.ISinhVienService;
-import com.cg.service.totNghiep.ITotNghiepService;
-import com.cg.service.truong.ITruongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -29,9 +26,6 @@ public class WorkController {
 
     @Autowired
     private INganhService nganhService;
-
-    @Autowired
-    private ITotNghiepService totNghiepService;
 
     @Autowired
     private ICongViecService congViecService;
