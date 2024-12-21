@@ -6,7 +6,7 @@ import com.cg.model.dto.CongViecDTO;
 import com.cg.service.congViec.ICongViecService;
 import com.cg.service.nganh.INganhService;
 import com.cg.service.sinhvien.ISinhVienService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -18,18 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequestMapping("/work")
+@RequiredArgsConstructor
 public class WorkController {
 
-    @Autowired
-    private ISinhVienService sinhVienService;
-
-    @Autowired
-    private INganhService nganhService;
-
-    @Autowired
-    private ICongViecService congViecService;
+    private final ISinhVienService sinhVienService;
+    private final INganhService nganhService;
+    private final ICongViecService congViecService;
 
 
     @GetMapping

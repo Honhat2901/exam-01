@@ -2,7 +2,7 @@ package com.cg.service.sinhvien;
 
 import com.cg.model.SinhVien;
 import com.cg.repository.SinhVienRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.Optional;
 
 
 @Service
+@RequiredArgsConstructor
 public class SinhVienService implements ISinhVienService {
 
-    @Autowired
-    private SinhVienRepository sinhVienRepository;
+    private final SinhVienRepository sinhVienRepository;
 
     @Override
     public List<SinhVien> findAll() {

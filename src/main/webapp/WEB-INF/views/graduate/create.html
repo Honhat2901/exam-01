@@ -11,7 +11,7 @@
             <div class="col-lg-4">
                 <th:block th:replace="/layout/header_nav_menu"></th:block>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 text-center">
                 <h3 class="navbar-brand">Thêm mới thông tin tốt nghiệp</h3>
             </div>
             <div class="col-lg-4">
@@ -21,7 +21,7 @@
     </nav>
 </header>
 
-<div class="body">
+<div class="body p-2">
     <div class="nav-button text-end">
         <a href="/graduate">
             <button class="btn btn-outline-secondary" type="button">
@@ -45,11 +45,11 @@
                 <th:block th:if="${hasError} == true">
                     <div class="alert-danger p-2">
                         <h5>Vui lòng xem và sửa các lỗi sau:</h5>
-                        <ul th:each="er : ${errors}">
-                            <li th:text="${er.getDefaultMessage()}"></li>
+                        <ul th:if="${errors != null && errors.size() > 0}">
+                            <li th:each="er : ${errors}" th:text="${er.getDefaultMessage()}"></li>
                         </ul>
-                        <ul th:each="er : ${dataError}">
-                            <li th:text="${er}"></li>
+                        <ul th:if="${dataError != null && dataError.size() > 0}">
+                            <li th:each="er : ${dataError}" th:text="${er}"></li>
                         </ul>
                     </div>
                 </th:block>

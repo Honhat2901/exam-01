@@ -2,7 +2,7 @@ package com.cg.controller;
 
 import com.cg.model.SinhVien;
 import com.cg.service.sinhvien.ISinhVienService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -16,10 +16,10 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/student")
+@RequiredArgsConstructor
 public class StudentController {
 
-    @Autowired
-    private ISinhVienService sinhVienService;
+    private final ISinhVienService sinhVienService;
 
 
     @GetMapping
@@ -41,10 +41,13 @@ public class StudentController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/student/edit");
 
+        List<String> errors = new ArrayList<>();
+
         Optional<SinhVien> sinhVienOptional = sinhVienService.findBySoCMND(soCMND);
         if (sinhVienOptional.isEmpty()) {
+            errors.add("Số CMND không tồn tại");
             mv.addObject("hasError", true);
-            mv.addObject("dataError", "Số CMND không tồn tại");
+            mv.addObject("dataError", errors);
             mv.addObject("sinhVien", null);
         }
         else {

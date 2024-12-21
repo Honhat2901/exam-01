@@ -2,17 +2,17 @@ package com.cg.service.truong;
 
 import com.cg.model.Truong;
 import com.cg.repository.TruongRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TruongService implements ITruongService {
 
-    @Autowired
-    private TruongRepository truongRepository;
+    private final TruongRepository truongRepository;
 
     @Override
     public List<Truong> findAll() {

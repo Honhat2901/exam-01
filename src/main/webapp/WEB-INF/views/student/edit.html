@@ -11,7 +11,7 @@
                 <div class="col-lg-4">
                     <th:block th:replace="/layout/header_nav_menu"></th:block>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 text-center">
                     <h3 class="navbar-brand">Cập nhật thông tin sinh viên</h3>
                 </div>
                 <div class="col-lg-4">
@@ -21,7 +21,7 @@
         </nav>
     </header>
 
-    <div class="body">
+    <div class="body p-2">
         <div class="nav-button text-end">
             <a href="/student">
                 <button class="btn btn-outline-secondary" type="button">
@@ -45,11 +45,11 @@
                     <th:block th:if="${hasError} == true">
                         <div class="alert-danger p-2">
                             <h5>Vui lòng xem và sửa các lỗi sau:</h5>
-                            <ul th:each="er : ${errors}">
-                                <li th:text="${er.getDefaultMessage()}"></li>
+                            <ul th:if="${errors != null && errors.size() > 0}">
+                                <li th:each="er : ${errors}" th:text="${er.getDefaultMessage()}"></li>
                             </ul>
-                            <ul th:each="er : ${dataError}">
-                                <li th:text="${er}"></li>
+                            <ul th:if="${dataError != null && dataError.size() > 0}">
+                                <li th:each="er : ${dataError}" th:text="${er}"></li>
                             </ul>
                         </div>
                     </th:block>
@@ -57,22 +57,6 @@
 
                 <div class="col-lg-12">
                     <form th:object="${sinhVien}" method="post" class="mt-3">
-<!--                        <div class="col-lg-6 mb-3 px-2" style="float: left;">-->
-<!--                            <label for="maTruong" class="form-label">Mã trường</label>-->
-<!--                            <select class="form-select" id="maTruong" name="maTruong">-->
-<!--                                <th:block th:each="item : ${truongs}">-->
-<!--                                    <option th:text="${item.tenTruong}" th:value="${item.maTruong}"></option>-->
-<!--                                </th:block>-->
-<!--                            </select>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-6 mb-3 px-2" style="float: left;">-->
-<!--                            <label for="maNganh" class="form-label">Mã ngành</label>-->
-<!--                            <select class="form-select" id="maNganh" name="maNganh">-->
-<!--                                <th:block th:each="item : ${nganhs}">-->
-<!--                                    <option th:text="${item.tenNganh}" th:value="${item.maNganh}"></option>-->
-<!--                                </th:block>-->
-<!--                            </select>-->
-<!--                        </div>-->
                         <div class="col-lg-6 mb-3 px-2" style="float: left;">
                             <label for="soCMND" class="form-label">Số CMND</label>
                             <input type="text" class="form-control" readonly id="soCMND" th:field="${sinhVien.soCMND}">
@@ -93,18 +77,6 @@
                             <label for="diaChi" class="form-label">Địa chỉ</label>
                             <input type="text" class="form-control" id="diaChi" th:field="${sinhVien.diaChi}">
                         </div>
-<!--                        <div class="col-lg-6 mb-3 px-2" style="float: left;">-->
-<!--                            <label for="heTotNghiep" class="form-label">Hệ tốt nghiệp</label>-->
-<!--                            <input type="text" class="form-control" id="heTotNghiep" th:field="${totNghiep.heTN}">-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-6 mb-3 px-2" style="float: left;">-->
-<!--                            <label for="ngayTotNghiep" class="form-label">Ngày tốt nghiệp</label>-->
-<!--                            <input type="date" class="form-control" id="ngayTotNghiep" th:field="${totNghiep.ngayTN}">-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-6 mb-3 px-2" style="float: left;">-->
-<!--                            <label for="loaiTotNghiep" class="form-label">Loại tốt nghiệp</label>-->
-<!--                            <input type="text" class="form-control" id="loaiTotNghiep" th:field="${totNghiep.loaiTN}">-->
-<!--                        </div>-->
                         <div class="col-lg-6 mt-3 px-2" style="clear: both;">
                             <button type="submit" class="btn btn-outline-secondary px-2">Cập nhật</button>
                         </div>

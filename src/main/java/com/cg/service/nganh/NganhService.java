@@ -1,20 +1,19 @@
 package com.cg.service.nganh;
 
-
-
 import com.cg.model.Nganh;
 import com.cg.repository.NganhRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
+@RequiredArgsConstructor
 public class NganhService implements INganhService {
 
-    @Autowired
-    private NganhRepository nganhRepository;
+    private final NganhRepository nganhRepository;
 
     @Override
     public List<Nganh> findAll() {
@@ -28,8 +27,6 @@ public class NganhService implements INganhService {
     public Optional<Nganh> findById(Long id) {
         return nganhRepository.findById(id);
     }
-
-
 
     @Override
     public Nganh updateById(Nganh nganh, Long id) {

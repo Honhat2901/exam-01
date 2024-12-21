@@ -1,9 +1,8 @@
 package com.cg.controller;
 
-
 import com.cg.model.Nganh;
 import com.cg.service.nganh.INganhService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -13,12 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequestMapping("/job")
+@RequiredArgsConstructor
 public class JobController {
 
-    @Autowired
-    private INganhService nganhService;
+    private final INganhService nganhService;
+
 
     @GetMapping
     public ModelAndView showList() {

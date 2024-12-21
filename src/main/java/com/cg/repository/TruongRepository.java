@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public interface TruongRepository extends JpaRepository<Truong, Long> {
     List<Truong> searchAllByTenTruongLikeOrDiaChiLikeOrSoDTLike(String tenTruong, String diaChi, String soDT);

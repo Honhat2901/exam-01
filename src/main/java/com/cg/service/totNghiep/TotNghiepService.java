@@ -6,7 +6,7 @@ import com.cg.model.TotNghiepID;
 import com.cg.model.dto.TotNghiepListDTO;
 import com.cg.repository.SinhVienRepository;
 import com.cg.repository.TotNghiepRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,13 +16,12 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class TotNghiepService implements ITotNghiepService {
 
-    @Autowired
-    private SinhVienRepository sinhVienRepository;
+    private final SinhVienRepository sinhVienRepository;
 
-    @Autowired
-    private TotNghiepRepository totNghiepRepository;
+    private final TotNghiepRepository totNghiepRepository;
 
     @Override
     public List<TotNghiep> findAll() {

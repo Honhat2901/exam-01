@@ -10,7 +10,7 @@ import com.cg.service.nganh.INganhService;
 import com.cg.service.sinhvien.ISinhVienService;
 import com.cg.service.totNghiep.ITotNghiepService;
 import com.cg.service.truong.ITruongService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -22,21 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequestMapping("/graduate")
+@RequiredArgsConstructor
 public class GraduateController {
 
-    @Autowired
-    private ISinhVienService sinhVienService;
+    private final ISinhVienService sinhVienService;
 
-    @Autowired
-    private ITruongService truongService;
+    private final ITruongService truongService;
 
-    @Autowired
-    private INganhService nganhService;
+    private final INganhService nganhService;
 
-    @Autowired
-    private ITotNghiepService totNghiepService;
+    private final ITotNghiepService totNghiepService;
 
 
     @GetMapping
@@ -45,29 +43,6 @@ public class GraduateController {
         mv.setViewName("/graduate/index");
 
         List<TotNghiepListDTO> totNghiepListDTOS = totNghiepService.findAllTotNghiepListDTO();
-
-//        List<TotNghiep> totNghieps = totNghiepService.findAll();
-
-//        for (TotNghiep tn : totNghieps) {
-//            TotNghiepListDTO totNghiepListDTO = new TotNghiepListDTO();
-//
-//            Optional<Truong> truong = truongService.findById(tn.getMaTruong());
-//            totNghiepListDTO.setTenTruong(truong.get().getTenTruong());
-//
-//            Optional<Nganh> nganh = nganhService.findById(tn.getMaNganh());
-//            totNghiepListDTO.setTenNganh(nganh.get().getTenNganh());
-//
-//            Optional<SinhVien> sinhVien = sinhVienService.findBySoCMND(tn.getSoCMND());
-//
-//            totNghiepListDTO.setSoCMND(tn.getSoCMND());
-//            totNghiepListDTO.setHoTen(sinhVien.get().getHoTen());
-//
-//            totNghiepListDTO.setHeTN(tn.getHeTN());
-//            totNghiepListDTO.setNgayTN(tn.getNgayTN().toString());
-//            totNghiepListDTO.setLoaiTN(tn.getLoaiTN());
-//
-//            totNghiepListDTOS.add(totNghiepListDTO);
-//        }
 
         mv.addObject("totNghieps", totNghiepListDTOS);
 

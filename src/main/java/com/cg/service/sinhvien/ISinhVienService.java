@@ -1,12 +1,12 @@
 package com.cg.service.sinhvien;
 
 import com.cg.model.SinhVien;
-import com.cg.service.BaseService;
+import com.cg.service.IBaseService;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ISinhVienService extends BaseService<SinhVien, Long> {
+public interface ISinhVienService extends IBaseService<SinhVien, Long> {
 
     Boolean existsBySoCMND(String SoCMND);
 

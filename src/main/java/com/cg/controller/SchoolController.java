@@ -3,7 +3,7 @@ package com.cg.controller;
 import com.cg.model.Nganh;
 import com.cg.model.Truong;
 import com.cg.service.truong.ITruongService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -13,12 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 @RequestMapping("/school")
+@RequiredArgsConstructor
 public class SchoolController {
 
-    @Autowired
-    private ITruongService truongService;
+    private final ITruongService truongService;
+
 
     @GetMapping
     public ModelAndView showList() {

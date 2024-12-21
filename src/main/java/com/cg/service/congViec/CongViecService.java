@@ -4,17 +4,17 @@ import com.cg.model.CongViec;
 import com.cg.model.CongViecID;
 import com.cg.model.dto.CongViecDTO;
 import com.cg.repository.CongViecRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CongViecService implements ICongViecService {
 
-    @Autowired
-    private CongViecRepository congViecRepository;
+    private final CongViecRepository congViecRepository;
 
     @Override
     public List<CongViec> findAll() {
